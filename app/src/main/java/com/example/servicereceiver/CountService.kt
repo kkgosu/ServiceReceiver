@@ -26,8 +26,11 @@ class CountService : Service() {
         Log.d(TAG, "onStartCommand: ")
 
         mScheduleExecutorService.scheduleAtFixedRate({
-            Log.d(TAG, "onStartCommand: ${System.currentTimeMillis()}")
-        }, 0, 1, TimeUnit.SECONDS)
+            val timeMillis = System.currentTimeMillis()
+            val intentToSend = Intent(SimpleReceiver.SIMPLE_ACTION)
+            intentToSend.putExtra("Time", timeMillis)
+            sendBroadcast(intentToSend)
+        }, 0, 4, TimeUnit.SECONDS)
 
         return START_STICKY //if service was killed bt the system, it will be recreated asap
     }
@@ -36,6 +39,5 @@ class CountService : Service() {
     override fun onDestroy() {
         Log.d(TAG, "onDestroy: ")
         mScheduleExecutorService.shutdownNow()
-
     }
 }

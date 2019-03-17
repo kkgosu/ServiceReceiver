@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mIntentFilter = IntentFilter(SimpleReceiver.SIMPLE_ACTION)
-        mSimpleReceiver = SimpleReceiver()
+        mSimpleReceiver = SimpleReceiver(timeTextView)
 
     }
 
