@@ -10,7 +10,7 @@ class TempActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_temp)
 
-        val extras = intent.getLongExtra("Time", 0)
-        text.text = "$extras"
+        val extras = intent.getStringExtra("Time")
+        text.text = "time from notification is $extras"
     }
 }
